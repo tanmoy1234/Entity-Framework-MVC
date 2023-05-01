@@ -1,0 +1,42 @@
+﻿@model EfDemoMvc.Models.tblProduct
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit @Model.prod_name</h2>
+@using (Html.BeginForm("Edit", "Default", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(Model => Model.prod_id)
+    <table class="table">
+        <tr>
+            <td>Enter Product Name: </td>
+            <td>@Html.EditorFor(Model => Model.prod_name, new { htmlAtrributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td>Enter Product Price: </td>
+            <td>@Html.EditorFor(Model => Model.prod_price, new { htmlAtrributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td>Enter Product Quantity: </td>
+            <td>@Html.EditorFor(Model => Model.prod_qty, new { htmlAtrributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td>Choose a Product Image: </td>
+
+            <td>
+                <img src="~/Content/images/@Model.prod_pic" alt="@Model.prod_name" width="100" height="100" />
+                <input type="file" name="postedFile" class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" name="submit" value="Update Product" class="btn btn-success text-center" />
+
+            </td>
+        </tr>
+
+
+    </table>
+
+}
+
